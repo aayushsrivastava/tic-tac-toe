@@ -3,9 +3,11 @@ require "sinatra/reloader" if development?
 require "./game"
 
 game = Game.new
+dev = development?
 
 get "/" do
-  erb :form, { :locals => { :game_progress => game.progress } }
+  erb :form, { :locals => { :game_progress => game.progress,
+                            :development => dev } }
 end
 
 post "/" do
